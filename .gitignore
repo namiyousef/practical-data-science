@@ -130,3 +130,6 @@ dmypy.json
 
 # jupyter-book
 practical-data-science/_build
+
+# .idea
+.idea
