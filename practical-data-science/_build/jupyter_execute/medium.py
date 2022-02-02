@@ -31,9 +31,49 @@
 
 # ## What is `jupyter-book`?
 # 
+# `jupyter-book` is a package that allows you to easily produce book like documents using markdown files and jupyter notebook files. For this reason, they are extremely flexible, and can allow you to quickly generate rich documents in a really short time. What's more, they can be integrated with GitHub Actions to enable CI/CD behaviour. If you are looking for a quick intallation of `jupyter-book` without any CI/CD features, just run:
+
+# In[1]:
+
+
+# install jupyter-book
+get_ipython().system('pip install jupyter-book')
+
+# create a book
+get_ipython().system('jupyter-book create your_book_name')
+
+
+# This creates a book with the name `your_book_name` if your current working directory. You can add any markdown or notebook files in this directory and then modify the `_toc.yml` file to add them to the structure of your book! It's that easy!
 # 
 # ### Installation using cookiecutter
 # 
+# My preferred way of installing `jupyter-book` is through `cookiecutter`. This method comes with extra files that interface with GitHub Actions to enable CI/CD on the project. To install using this method, first make sure you have `cookiecutter` installed:
+
+# In[2]:
+
+
+# install cookiecutter
+get_ipython().system('pip install -U cookiecutter')
+
+
+# Then, use the following cookiecutter command to download the latest jupyter-book configuration:
+
+# In[3]:
+
+
+get_ipython().system('cookiecutter git@github.com:executablebooks/cookiecutter-jupyter-book.git')
+
+
+# This then allows you to add some metadata about your project, such as the title, the author name, the license etc. In particular, I want to bring your attention to `book_slug` and `select include_ci_files`. For the former, it is the name of your project for download purposes, e.g. if you wanted to run `pip install project`. I have not used this feature yet, however I'm mentioning it in case you are interested in learning more about it. See [this](https://github.com/audreyfeldroy/cookiecutter-pypackage/issues/487) GitHub issue for a thread on what a slug is in `cookiecutter`. 
+# 
+# The more interesting tag is `select include_ci_files`. Selecting 1 will download CI/CD configurations for GitHub (whereas 2 will download that for GitLab). I'll be going through what this does for GitHub.
+
+# ### CI/CD files
+
+# ### Pushing to GitHub
+
+# ### Making Changes
+
 # ### Features
 
 # ## Thoughts and Takeaways
