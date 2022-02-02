@@ -453,7 +453,20 @@
 </div>
 </div>
 </div>
-<p>This creates a book with the name <code class="docutils literal notranslate"><span class="pre">your_book_name</span></code> if your current working directory. You can add any markdown or notebook files in this directory and then modify the <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> file to add them to the structure of your book! It’s that easy!</p>
+<p>This creates a book with the name <code class="docutils literal notranslate"><span class="pre">your_book_name</span></code> if your current working directory. The directory structure looks something like this:</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>your_book_name:
+    - _config.yml
+    - _toc.yml
+    - intro.md
+    - logo.png
+    - markdown.md
+    - notebooks.ipynb
+    - references.bib
+    - requirements.txt
+</pre></div>
+</div>
+<p>You can now work on your book by editing the .md or .ipynb files! You can even add your own files. Remember that the <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> files contains the structure of your book, so make sure any books added there are correctly referenced.</p>
+<p>For more, visit the jupyter-book official documentation <a class="reference external" href="https://jupyterbook.org/intro.html">here</a>.</p>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">%%capture</span></code> magic command is added to prevent the installation outputs from being printed.</p>
 <div class="section" id="installation-using-cookiecutter">
 <h3>Installation using cookiecutter<a class="headerlink" href="#installation-using-cookiecutter" title="Permalink to this headline">¶</a></h3>
@@ -484,7 +497,6 @@
 <div class="section" id="ci-cd-files">
 <h3>CI/CD files<a class="headerlink" href="#ci-cd-files" title="Permalink to this headline">¶</a></h3>
 <p>Cookiecutter automatically adds a hidden folder called <code class="docutils literal notranslate"><span class="pre">.github</span></code> which contains a .yml file <code class="docutils literal notranslate"><span class="pre">workflows/deploy.yml</span></code>. It’s contents are used by GitHub to trigger tests and deployments when you make changes to your project. By default, it is configured to look for changes to your main branch on GitHub. If changes are detected, then it runs some tests on an ubuntu environment with a specified version of Python. These include dependency installation (e.g. from <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>) and also which folders to monitor for new builds of your project.</p>
-<p>Cookiecutter automatically creates a requirements.txt file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test import pandas</span>
@@ -502,14 +514,23 @@
 </div>
 </div>
 </div>
-<p>Since I am running locally, I see ‘Pandas import failed.’ above, because I’m in an environment that is not using Pandas. However, the requirements file for the project does have pandas in it. This means that the published version of this page (see here). Should actually output a different message.</p>
+<p>Since I am running locally, I see ‘Pandas import failed.’ above, because I’m in an environment that is not using Pandas. However, the requirements file for the project does have pandas in it. This means that the published version of this page (see <a class="reference external" href="https://namiyousef.github.io/practical-data-science/medium.html">here</a>). Should actually output a different message.</p>
 </div>
 <div class="section" id="pushing-to-github">
 <h3>Pushing to GitHub<a class="headerlink" href="#pushing-to-github" title="Permalink to this headline">¶</a></h3>
+<p>In order to publish your notebook to GitHub, first activate GitHub pages by following instructions <a class="reference external" href="https://pages.github.com">here</a>. Once that’s done, you’ll have a repository <code class="docutils literal notranslate"><span class="pre">{your_github_username}.github.io</span></code> that points to a webpage with that same name. Now, any new project you create can have a webpage associated with it at <code class="docutils literal notranslate"><span class="pre">{your_github_username}.github.io/project_name</span></code>.</p>
+<p>You can thus host your book on GitHub under a project name. So, create a new repository for your project, then push all of the files within <code class="docutils literal notranslate"><span class="pre">your_book_name</span></code> (note: not the one created earlier, but rather the one created using cookiecutter) to it. On the GitHub repo, make sure you create an empty <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch (this is branch that GitHub actions will push the contents of your book to), and to point the location of your project GitHub pages to this branch (this can be done by going into your project repo settings, then into pages and then enabling the feature and pointing the directory to gh-pages root).</p>
 </div>
 <div class="section" id="making-changes">
 <h3>Making Changes<a class="headerlink" href="#making-changes" title="Permalink to this headline">¶</a></h3>
-</div>
+<p>Once your project is linked to GitHub, any new commits to the project will trigger the GitHub action. This will automatically run some tests on GitHub.</p>
+<p>On your latest commit, you’ll be able to see an orange dot that indicates that tests are being run. After this is complete, you will either get a cross or a tick.</p>
+<img src="images/cross.png">
+<img src="images/tick.png">
+<p>This indicates whether the test was successful or not. If not, you will need to look into the logs of the test. Remember that the details of the tests run are found in <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code> so it’s always a good to start there.</p>
+<p>If successful, then your project will be deployed on GitHub pages!
+You can see on the side of your repository for the latest build and visit it from there:</p>
+<img src="images/gh-pages.png"></div>
 <div class="section" id="features">
 <h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
 </div>
