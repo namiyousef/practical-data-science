@@ -426,6 +426,18 @@
 <p><code class="docutils literal notranslate"><span class="pre">jupyter_to_medium</span></code> is a Python package that allows you to directly deploy your Jupyter Notebook articles to Medium. This is useful if you typically base most of your articles on content from Jupyter Notebooks. I’ve been curious about this package for a while, but I’ve only just gotten round to experimenting with it… let’s see what it can do! If things go well I may strongly consider using it as the main source of my articles.</p>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+
+# install jupyter_to_medium
+!pip install jupyter_to_medium
+</pre></div>
+</div>
+</div>
+</div>
+<p>For most people, doing this should give you access to a ‘deploy’ button under File within your Jupyter notebook.</p>
+<p>If not (like in my case) then you need to run ``</p>
 </div>
 <div class="section" id="images">
 <h3>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
@@ -442,271 +454,41 @@
 <p><code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> is a package that allows you to easily produce book like documents using markdown files and jupyter notebook files. For this reason, they are extremely flexible, and can allow you to quickly generate rich documents in a really short time. What’s more, they can be integrated with GitHub Actions to enable CI/CD behaviour. If you are looking for a quick intallation of <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> without any CI/CD features, just run:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install jupyter-book</span>
-<span class="o">!</span>pip install jupyter-book
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> %%capture
 
-<span class="c1"># create a book</span>
-<span class="o">!</span>jupyter-book create your_book_name
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-book in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (0.12.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: click~=7.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (7.1.2)
-Requirement already satisfied: sphinx&lt;5,&gt;=3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (4.4.0)
-Requirement already satisfied: sphinx-thebe~=0.0.10 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.0.10)
-Requirement already satisfied: docutils&lt;0.18,&gt;=0.15 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.16)
-Requirement already satisfied: linkify-it-py~=1.0.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (1.0.3)
-Requirement already satisfied: pyyaml in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (6.0)
-Requirement already satisfied: sphinx-book-theme~=0.1.4 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.1.10)
-Requirement already satisfied: sphinx-togglebutton in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.2.3)
-Requirement already satisfied: sphinxcontrib-bibtex~=2.2.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (2.2.1)
-Requirement already satisfied: sphinx-multitoc-numbering~=0.1.3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.1.3)
-Requirement already satisfied: jsonschema&lt;4 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (3.2.0)
-Requirement already satisfied: sphinx-external-toc~=0.2.3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.2.3)
-Requirement already satisfied: sphinx-jupyterbook-latex~=0.4.6 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.4.6)
-Requirement already satisfied: myst-nb~=0.13.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.13.1)
-Requirement already satisfied: sphinx-copybutton in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.4.0)
-Requirement already satisfied: sphinx-panels~=0.6.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.6.0)
-Requirement already satisfied: jupytext&lt;1.12,&gt;=1.11.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (1.11.5)
-Requirement already satisfied: sphinx-comments in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-book) (0.0.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.11.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jsonschema&lt;4-&gt;jupyter-book) (1.16.0)
-Requirement already satisfied: setuptools in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jsonschema&lt;4-&gt;jupyter-book) (60.6.0)
-Requirement already satisfied: attrs&gt;=17.4.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jsonschema&lt;4-&gt;jupyter-book) (21.4.0)
-Requirement already satisfied: importlib-metadata in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jsonschema&lt;4-&gt;jupyter-book) (4.10.1)
-Requirement already satisfied: pyrsistent&gt;=0.14.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jsonschema&lt;4-&gt;jupyter-book) (0.18.1)
-Requirement already satisfied: mdit-py-plugins in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupytext&lt;1.12,&gt;=1.11.2-&gt;jupyter-book) (0.2.8)
-Requirement already satisfied: markdown-it-py~=1.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupytext&lt;1.12,&gt;=1.11.2-&gt;jupyter-book) (1.1.0)
-Requirement already satisfied: toml in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupytext&lt;1.12,&gt;=1.11.2-&gt;jupyter-book) (0.10.2)
-Requirement already satisfied: nbformat in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupytext&lt;1.12,&gt;=1.11.2-&gt;jupyter-book) (5.1.3)
-Requirement already satisfied: uc-micro-py in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from linkify-it-py~=1.0.1-&gt;jupyter-book) (1.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipywidgets&lt;8,&gt;=7.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from myst-nb~=0.13.1-&gt;jupyter-book) (7.6.5)
-Requirement already satisfied: myst-parser~=0.15.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from myst-nb~=0.13.1-&gt;jupyter-book) (0.15.2)
-Requirement already satisfied: nbconvert&lt;7,&gt;=5.6 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from myst-nb~=0.13.1-&gt;jupyter-book) (6.4.1)
-Requirement already satisfied: ipython in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from myst-nb~=0.13.1-&gt;jupyter-book) (7.31.1)
-Requirement already satisfied: jupyter-cache~=0.4.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from myst-nb~=0.13.1-&gt;jupyter-book) (0.4.3)
-Requirement already satisfied: jupyter-sphinx~=0.3.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from myst-nb~=0.13.1-&gt;jupyter-book) (0.3.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sphinxcontrib-htmlhelp&gt;=2.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.0.0)
-Requirement already satisfied: requests&gt;=2.5.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.27.1)
-Requirement already satisfied: alabaster&lt;0.8,&gt;=0.7 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (0.7.12)
-Requirement already satisfied: babel&gt;=1.3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.9.1)
-Requirement already satisfied: Jinja2&gt;=2.3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (3.0.3)
-Requirement already satisfied: snowballstemmer&gt;=1.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.2.0)
-Requirement already satisfied: Pygments&gt;=2.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.11.2)
-Requirement already satisfied: sphinxcontrib-jsmath in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.0.1)
-Requirement already satisfied: sphinxcontrib-devhelp in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.0.2)
-Requirement already satisfied: sphinxcontrib-serializinghtml&gt;=1.1.5 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.1.5)
-Requirement already satisfied: sphinxcontrib-qthelp in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.0.3)
-Requirement already satisfied: packaging in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (21.3)
-Requirement already satisfied: sphinxcontrib-applehelp in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.0.2)
-Requirement already satisfied: imagesize in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.3.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: beautifulsoup4&lt;5,&gt;=4.6.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx-book-theme~=0.1.4-&gt;jupyter-book) (4.10.0)
-Requirement already satisfied: pydata-sphinx-theme~=0.7.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx-book-theme~=0.1.4-&gt;jupyter-book) (0.7.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: importlib-resources in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx-jupyterbook-latex~=0.4.6-&gt;jupyter-book) (5.4.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wheel in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinx-togglebutton-&gt;jupyter-book) (0.37.1)
-Requirement already satisfied: pybtex&gt;=0.20 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinxcontrib-bibtex~=2.2.0-&gt;jupyter-book) (0.24.0)
-Requirement already satisfied: pybtex-docutils&gt;=1.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sphinxcontrib-bibtex~=2.2.0-&gt;jupyter-book) (1.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pytz&gt;=2015.7 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from babel&gt;=1.3-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2021.3)
-Requirement already satisfied: soupsieve&gt;1.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from beautifulsoup4&lt;5,&gt;=4.6.1-&gt;sphinx-book-theme~=0.1.4-&gt;jupyter-book) (2.3.1)
-Requirement already satisfied: zipp&gt;=0.5 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from importlib-metadata-&gt;jsonschema&lt;4-&gt;jupyter-book) (3.7.0)
-Requirement already satisfied: typing-extensions&gt;=3.6.4 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from importlib-metadata-&gt;jsonschema&lt;4-&gt;jupyter-book) (4.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (6.7.0)
-Requirement already satisfied: widgetsnbextension~=3.5.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (3.5.2)
-Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.0.2)
-Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.2.0)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (5.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: backcall in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.2.0)
-Requirement already satisfied: pexpect&gt;4.3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (4.8.0)
-Requirement already satisfied: appnope in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.1.2)
-Requirement already satisfied: matplotlib-inline in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.1.3)
-Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (3.0.26)
-Requirement already satisfied: pickleshare in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.7.5)
-Requirement already satisfied: decorator in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (5.1.1)
-Requirement already satisfied: jedi&gt;=0.16 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.18.1)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from Jinja2&gt;=2.3-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbclient&lt;0.6,&gt;=0.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.5.10)
-Requirement already satisfied: sqlalchemy&lt;1.5,&gt;=1.3.12 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.4.31)
-Requirement already satisfied: nbdime in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (3.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.8.4)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.5.0)
-Requirement already satisfied: testpath in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.5.0)
-Requirement already satisfied: jupyter-core in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (4.9.1)
-Requirement already satisfied: defusedxml in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.7.1)
-Requirement already satisfied: bleach in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (4.1.0)
-Requirement already satisfied: entrypoints&gt;=0.2.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.3)
-Requirement already satisfied: jupyterlab-pygments in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.1.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: latexcodec&gt;=1.0.4 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from pybtex&gt;=0.20-&gt;sphinxcontrib-bibtex~=2.2.0-&gt;jupyter-book) (2.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2.0.11)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (1.26.8)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (3.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.5.0-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (2021.10.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from packaging-&gt;sphinx&lt;5,&gt;=3-&gt;jupyter-book) (3.0.7)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: debugpy&lt;2.0,&gt;=1.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.5.1)
-Requirement already satisfied: nest-asyncio in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.5.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-client&lt;8.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (7.1.2)
-Requirement already satisfied: tornado&lt;7.0,&gt;=4.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (6.1)
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.8.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.7.0)
-Requirement already satisfied: wcwidth in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.2.5)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: greenlet!=0.4.17 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from sqlalchemy&lt;1.5,&gt;=1.3.12-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.1.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: notebook&gt;=4.4.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (6.4.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: webencodings in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from bleach-&gt;nbconvert&lt;7,&gt;=5.6-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.5.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: colorama in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.4.4)
-Requirement already satisfied: jupyter-server in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.13.4)
-Requirement already satisfied: GitPython!=2.1.4,!=2.1.5,!=2.1.6 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (3.1.26)
-Requirement already satisfied: jupyter-server-mathjax&gt;=0.2.2 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.2.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gitdb&lt;5,&gt;=4.0.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from GitPython!=2.1.4,!=2.1.5,!=2.1.6-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (4.0.9)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyzmq&gt;=13 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (22.3.0)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;8,&gt;=7.0.0-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (2.8.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: Send2Trash in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.8.0)
-Requirement already satisfied: anyio&lt;4,&gt;=3.1.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (3.5.0)
-Requirement already satisfied: websocket-client in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.2.3)
-Requirement already satisfied: terminado&gt;=0.8.3 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.13.1)
-Requirement already satisfied: argon2-cffi in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (21.3.0)
-Requirement already satisfied: prometheus-client in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (0.13.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sniffio&gt;=1.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.2.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: smmap&lt;6,&gt;=3.0.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from gitdb&lt;5,&gt;=4.0.1-&gt;GitPython!=2.1.4,!=2.1.5,!=2.1.6-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (5.0.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: argon2-cffi-bindings in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from argon2-cffi-&gt;jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (21.2.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cffi&gt;=1.0.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (1.15.0)
-Requirement already satisfied: pycparser in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server-&gt;nbdime-&gt;jupyter-cache~=0.4.1-&gt;myst-nb~=0.13.1-&gt;jupyter-book) (2.21)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===============================================================================
+# install jupyter-book
+!pip install jupyter-book
 
-Your book template can be found at
-
-    your_book_name/
-
-===============================================================================
+# create a book
+!jupyter-book create your_book_name
 </pre></div>
 </div>
 </div>
 </div>
-<p>This creates a book with the name <code class="docutils literal notranslate"><span class="pre">your_book_name</span></code> if your current working directory. You can add any markdown or notebook files in this directory and then modify the <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> file to add them to the structure of your book! It’s that easy!</p>
+<p>This creates a book with the name <code class="docutils literal notranslate"><span class="pre">your_book_name</span></code> if your current working directory. The directory structure looks something like this:</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>your_book_name:
+    - _config.yml
+    - _toc.yml
+    - intro.md
+    - logo.png
+    - markdown.md
+    - notebooks.ipynb
+    - references.bib
+    - requirements.txt
+</pre></div>
+</div>
+<p>You can now work on your book by editing the .md or .ipynb files! You can even add your own files. Remember that the <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> files contains the structure of your book, so make sure any books added there are correctly referenced.</p>
+<p>For more, visit the jupyter-book official documentation <a class="reference external" href="https://jupyterbook.org/intro.html">here</a>.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">%%capture</span></code> magic command is added to prevent the installation outputs from being printed.</p>
 <div class="section" id="installation-using-cookiecutter">
 <h3>Installation using cookiecutter<a class="headerlink" href="#installation-using-cookiecutter" title="Permalink to this headline">¶</a></h3>
 <p>My preferred way of installing <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> is through <code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code>. This method comes with extra files that interface with GitHub Actions to enable CI/CD on the project. To install using this method, first make sure you have <code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code> installed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install cookiecutter</span>
-<span class="o">!</span>pip install -U cookiecutter
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cookiecutter
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Using cached cookiecutter-1.7.3-py2.py3-none-any.whl (34 kB)
-Requirement already satisfied: six&gt;=1.10 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from cookiecutter) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting poyo&gt;=0.5.0
-  Using cached poyo-0.5.0-py2.py3-none-any.whl (10 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting binaryornot&gt;=0.4.4
-  Using cached binaryornot-0.4.4-py2.py3-none-any.whl (9.0 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting python-slugify&gt;=4.0.0
-  Using cached python_slugify-5.0.2-py2.py3-none-any.whl (6.7 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jinja2-time&gt;=0.2.0
-  Using cached jinja2_time-0.2.0-py2.py3-none-any.whl (6.4 kB)
-Requirement already satisfied: Jinja2&lt;4.0.0,&gt;=2.7 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from cookiecutter) (3.0.3)
-Requirement already satisfied: click&gt;=7.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from cookiecutter) (7.1.2)
-Requirement already satisfied: requests&gt;=2.23.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from cookiecutter) (2.27.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting chardet&gt;=3.0.2
-  Using cached chardet-4.0.0-py2.py3-none-any.whl (178 kB)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from Jinja2&lt;4.0.0,&gt;=2.7-&gt;cookiecutter) (2.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting arrow
-  Using cached arrow-1.2.2-py3-none-any.whl (64 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting text-unidecode&gt;=1.3
-  Using cached text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.23.0-&gt;cookiecutter) (2021.10.8)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.23.0-&gt;cookiecutter) (1.26.8)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.23.0-&gt;cookiecutter) (2.0.11)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from requests&gt;=2.23.0-&gt;cookiecutter) (3.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.7.0 in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from arrow-&gt;jinja2-time&gt;=0.2.0-&gt;cookiecutter) (2.8.2)
-Requirement already satisfied: typing-extensions in /Users/yousefnami/python_environments/TEST/lib/python3.7/site-packages (from arrow-&gt;jinja2-time&gt;=0.2.0-&gt;cookiecutter) (4.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: text-unidecode, python-slugify, poyo, chardet, binaryornot, arrow, jinja2-time, cookiecutter
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed arrow-1.2.2 binaryornot-0.4.4 chardet-4.0.0 cookiecutter-1.7.3 jinja2-time-0.2.0 poyo-0.5.0 python-slugify-5.0.2 text-unidecode-1.3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+
+# install cookiecutter
+!pip install -U cookiecutter
 </pre></div>
 </div>
 </div>
@@ -714,16 +496,9 @@ Requirement already satisfied: typing-extensions in /Users/yousefnami/python_env
 <p>Then, use the following cookiecutter command to download the latest jupyter-book configuration:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cookiecutter git@github.com:executablebooks/cookiecutter-jupyter-book.git
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You&#39;ve downloaded /Users/yousefnami/.cookiecutters/cookiecutter-jupyter-book before. Is it okay to delete and re-download it? [yes]: 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
-Aborted!
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+
+!cookiecutter git@github.com:executablebooks/cookiecutter-jupyter-book.git
 </pre></div>
 </div>
 </div>
@@ -733,15 +508,45 @@ Aborted!
 </div>
 <div class="section" id="ci-cd-files">
 <h3>CI/CD files<a class="headerlink" href="#ci-cd-files" title="Permalink to this headline">¶</a></h3>
+<p>Cookiecutter automatically adds a hidden folder called <code class="docutils literal notranslate"><span class="pre">.github</span></code> which contains a .yml file <code class="docutils literal notranslate"><span class="pre">workflows/deploy.yml</span></code>. It’s contents are used by GitHub to trigger tests and deployments when you make changes to your project. By default, it is configured to look for changes to your main branch on GitHub. If changes are detected, then it runs some tests on an ubuntu environment with a specified version of Python. These include dependency installation (e.g. from <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>) and also which folders to monitor for new builds of your project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test import pandas</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">pandas</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pandas import successful.&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pandas import failed.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pandas import failed.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since I am running locally, I see ‘Pandas import failed.’ above, because I’m in an environment that is not using Pandas. However, the requirements file for the project does have pandas in it. This means that the published version of this page (see <a class="reference external" href="https://namiyousef.github.io/practical-data-science/medium.html">here</a>). Should actually output a different message.</p>
 </div>
 <div class="section" id="pushing-to-github">
 <h3>Pushing to GitHub<a class="headerlink" href="#pushing-to-github" title="Permalink to this headline">¶</a></h3>
+<p>In order to publish your notebook to GitHub, first activate GitHub pages by following instructions <a class="reference external" href="https://pages.github.com">here</a>. Once that’s done, you’ll have a repository <code class="docutils literal notranslate"><span class="pre">{your_github_username}.github.io</span></code> that points to a webpage with that same name. Now, any new project you create can have a webpage associated with it at <code class="docutils literal notranslate"><span class="pre">{your_github_username}.github.io/project_name</span></code>.</p>
+<p>You can thus host your book on GitHub under a project name. So, create a new repository for your project, then push all of the files within <code class="docutils literal notranslate"><span class="pre">your_book_name</span></code> (note: not the one created earlier, but rather the one created using cookiecutter) to it. On the GitHub repo, make sure you create an empty <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch (this is branch that GitHub actions will push the contents of your book to), and to point the location of your project GitHub pages to this branch (this can be done by going into your project repo settings, then into pages and then enabling the feature and pointing the directory to gh-pages root).</p>
 </div>
 <div class="section" id="making-changes">
 <h3>Making Changes<a class="headerlink" href="#making-changes" title="Permalink to this headline">¶</a></h3>
+<p>Once your project is linked to GitHub, any new commits to the project will trigger the GitHub action. This will automatically run some tests on GitHub.</p>
+<p>On your latest commit, you’ll be able to see an orange dot that indicates that tests are being run. After this is complete, you will either get a cross or a tick.</p>
+<p><img alt="cross" src="_images/cross.png" />
+<img alt="tick" src="_images/tick.png" /></p>
+<p>This indicates whether the test was successful or not. If not, you will need to look into the logs of the test. Remember that the details of the tests run are found in <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code> so it’s always a good to start there.</p>
+<p>If successful, then your project will be deployed on GitHub pages!
+You can see on the side of your repository for the latest build and visit it from there:</p>
+<p><img alt="gh-pages" src="_images/gh-pages.png" /></p>
 </div>
 <div class="section" id="features">
 <h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<p>Jupyter Notebook is</p>
 </div>
 </div>
 <div class="section" id="thoughts-and-takeaways">
