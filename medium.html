@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -237,18 +239,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#images">
-     Images
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#links">
-     Links
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#code">
-     Code
+    <a class="reference internal nav-link" href="#tests-on-jupyter-to-medium">
+     Tests on Jupyter to Medium
     </a>
    </li>
   </ul>
@@ -284,17 +276,24 @@
      Making Changes
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#features">
-     Features
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#thoughts-and-takeaways">
    Thoughts and Takeaways
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-to-medium">
+     Jupyter to Medium
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-book">
+     Jupyter Book
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -338,18 +337,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#images">
-     Images
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#links">
-     Links
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#code">
-     Code
+    <a class="reference internal nav-link" href="#tests-on-jupyter-to-medium">
+     Tests on Jupyter to Medium
     </a>
    </li>
   </ul>
@@ -385,17 +374,24 @@
      Making Changes
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#features">
-     Features
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#thoughts-and-takeaways">
    Thoughts and Takeaways
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-to-medium">
+     Jupyter to Medium
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-book">
+     Jupyter Book
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -426,15 +422,65 @@
 <p><code class="docutils literal notranslate"><span class="pre">jupyter_to_medium</span></code> is a Python package that allows you to directly deploy your Jupyter Notebook articles to Medium. This is useful if you typically base most of your articles on content from Jupyter Notebooks. I’ve been curious about this package for a while, but I’ve only just gotten round to experimenting with it… let’s see what it can do! If things go well I may strongly consider using it as the main source of my articles.</p>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+
+# install jupyter_to_medium
+!pip install jupyter_to_medium
+</pre></div>
 </div>
-<div class="section" id="images">
-<h3>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="links">
-<h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="code">
-<h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<p>For most people, doing this should give you access to a ‘deploy’ button under File within your Jupyter notebook.</p>
+<p>If not (like in my case) then you need to run <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">bundlerextension</span> <span class="pre">enable</span> <span class="pre">--py</span> <span class="pre">jupyter_to_medium._bundler</span> <span class="pre">--sys-prefix</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;!--![insert](images/insert.png)--&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now you can use this to deploy your notebook to Medium. There are some options on how images are to be compressed, ands whether you want your code converted to gists. For this article, I’ve just used the default options to see what the outcome is like.</p>
+</div>
+<div class="section" id="tests-on-jupyter-to-medium">
+<h3>Tests on Jupyter to Medium<a class="headerlink" href="#tests-on-jupyter-to-medium" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>I want to see what the compression for maths formulas looks like…</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial}{\partial t}(\rho\underline{u})+\nabla \cdot(\rho \underline{u}\otimes\underline{u})=-\nabla p +\nabla\cdot \underline{\underline{\tau}}+\rho g\]</div>
+<ol class="simple">
+<li><p>Numpy arrays</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Command line logs</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="nb">echo</span> <span class="s2">&quot;TESTING&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TESTING
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="what-is-jupyter-book">
@@ -525,26 +571,44 @@
 <h3>Making Changes<a class="headerlink" href="#making-changes" title="Permalink to this headline">¶</a></h3>
 <p>Once your project is linked to GitHub, any new commits to the project will trigger the GitHub action. This will automatically run some tests on GitHub.</p>
 <p>On your latest commit, you’ll be able to see an orange dot that indicates that tests are being run. After this is complete, you will either get a cross or a tick.</p>
-<img src="images/cross.png">
-<img src="images/tick.png">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;&lt;!--![cross](images/cross.png)</span>
+<span class="sd">![tick](images/tick.png)--&gt;&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&lt;!--![cross](images/cross.png)\n![tick](images/tick.png)--&gt;&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p>This indicates whether the test was successful or not. If not, you will need to look into the logs of the test. Remember that the details of the tests run are found in <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code> so it’s always a good to start there.</p>
 <p>If successful, then your project will be deployed on GitHub pages!
 You can see on the side of your repository for the latest build and visit it from there:</p>
-<img src="images/gh-pages.png"><div class="figure align-default" id="directive-fig">
-<a class="reference internal image-reference" href="_images/cross.png"><img alt="_images/cross.png" src="_images/cross.png" style="height: 150px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Here is my figure caption!</span><a class="headerlink" href="#directive-fig" title="Permalink to this image">¶</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;!--![gh-pages](images/gh-pages.png)--&gt;</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="features">
-<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 <div class="section" id="thoughts-and-takeaways">
 <h2>Thoughts and Takeaways<a class="headerlink" href="#thoughts-and-takeaways" title="Permalink to this headline">¶</a></h2>
-<p>Personally, I don’t usually write my articles from Jupyter Notebooks. I really like the clear split of running expeirments on Jupyter (or usually just Python) and then writing an article with a clear narrative in mind in order to make it appealing to the reader.</p>
-<p>Thoughts on jupyter_to_medium in general?</p>
-<p>So going forward, I don’t think I’ll be using <code class="docutils literal notranslate"><span class="pre">jupyter_to_medium</span></code> much, if at all.</p>
-<p>On the other hand, <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> seems extremely promising. I am quite fond of it so far, and I think I’ll start notetaking there as opposed to locally, while slowly starting to migrate my older content.</p>
+<div class="section" id="jupyter-to-medium">
+<h3>Jupyter to Medium<a class="headerlink" href="#jupyter-to-medium" title="Permalink to this headline">¶</a></h3>
+<p>Personally, I don’t usually write my articles from Jupyter Notebooks. I really like the clear split of running expeirments on Jupyter (or usually just Python) and then writing an article with a clear narrative in mind in order to make it appealing to the reader. As such, I don’t think I’ll be using <code class="docutils literal notranslate"><span class="pre">jupyter_to_medium</span></code> much. I find uploading images and captioning them far simpler on Medium and will probably continue that way.</p>
+<p>In general though, I thing it’s a great package that can be helpful for a lot of writers. It can really accelerate the writing process of articles.</p>
+</div>
+<div class="section" id="jupyter-book">
+<h3>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> seems extremely promising. I am quite fond of it so far, and I think I’ll start notetaking there as opposed to locally, while slowly starting to migrate my older content. There’s still much to learn… there are still many features that I need to explore, such as referencing, proper use of figured and captions, proper integrations with code.</p>
+<p>Especially because I have not figured out why the images cause a failed build on GitHub but a successful one locally…</p>
+<p>All images by author unless indicated otherwise.</p>
+</div>
 </div>
 </div>
 
