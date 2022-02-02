@@ -31,19 +31,39 @@ get_ipython().run_cell_magic('capture', '', '\n# install jupyter_to_medium\n!pip
 
 # For most people, doing this should give you access to a 'deploy' button under File within your Jupyter notebook.
 # 
-# If not (like in my case) then you need to run ``
+# If not (like in my case) then you need to run `jupyter bundlerextension enable --py jupyter_to_medium._bundler --sys-prefix`.
+# <!--![insert](images/insert.png)-->
 
-# ### Images
+# Now you can use this to deploy your notebook to Medium. There are some options on how images are to be compressed, ands whether you want your code converted to gists. For this article, I've just used the default options to see what the outcome is like.
+
+# ### Tests on Jupyter to Medium
 # 
-# ### Links
+# 1) I want to see what the compression for maths formulas looks like...
 # 
-# ### Code
+# $$ \frac{\partial}{\partial t}(\rho\underline{u})+\nabla \cdot(\rho \underline{u}\otimes\underline{u})=-\nabla p +\nabla\cdot \underline{\underline{\tau}}+\rho g$$
+
+# 2) Numpy arrays
+
+# In[2]:
+
+
+import numpy as np
+np.array([1,2,3,4])
+
+
+# 3) Command line logs 
+
+# In[3]:
+
+
+get_ipython().system('echo "TESTING"')
+
 
 # ## What is `jupyter-book`?
 # 
 # `jupyter-book` is a package that allows you to easily produce book like documents using markdown files and jupyter notebook files. For this reason, they are extremely flexible, and can allow you to quickly generate rich documents in a really short time. What's more, they can be integrated with GitHub Actions to enable CI/CD behaviour. If you are looking for a quick intallation of `jupyter-book` without any CI/CD features, just run:
 
-# In[2]:
+# In[4]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n# install jupyter-book\n!pip install jupyter-book\n\n# create a book\n!jupyter-book create your_book_name')
@@ -74,7 +94,7 @@ get_ipython().run_cell_magic('capture', '', '\n# install jupyter-book\n!pip inst
 # 
 # My preferred way of installing `jupyter-book` is through `cookiecutter`. This method comes with extra files that interface with GitHub Actions to enable CI/CD on the project. To install using this method, first make sure you have `cookiecutter` installed:
 
-# In[3]:
+# In[5]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n# install cookiecutter\n!pip install -U cookiecutter')
@@ -82,7 +102,7 @@ get_ipython().run_cell_magic('capture', '', '\n# install cookiecutter\n!pip inst
 
 # Then, use the following cookiecutter command to download the latest jupyter-book configuration:
 
-# In[4]:
+# In[6]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n!cookiecutter git@github.com:executablebooks/cookiecutter-jupyter-book.git')
@@ -115,12 +135,6 @@ except:
 # 
 # You can thus host your book on GitHub under a project name. So, create a new repository for your project, then push all of the files within `your_book_name` (note: not the one created earlier, but rather the one created using cookiecutter) to it. On the GitHub repo, make sure you create an empty `gh-pages` branch (this is branch that GitHub actions will push the contents of your book to), and to point the location of your project GitHub pages to this branch (this can be done by going into your project repo settings, then into pages and then enabling the feature and pointing the directory to gh-pages root).
 
-# In[13]:
-
-
-
-
-
 # ### Making Changes
 # 
 # Once your project is linked to GitHub, any new commits to the project will trigger the GitHub action. This will automatically run some tests on GitHub. 
@@ -128,27 +142,29 @@ except:
 # On your latest commit, you'll be able to see an orange dot that indicates that tests are being run. After this is complete, you will either get a cross or a tick. 
 # 
 # 
-# ![cross](images/cross.png)
-# ![tick](images/tick.png)
+# <!--![cross](images/cross.png)
+# ![tick](images/tick.png)-->
 # 
 # This indicates whether the test was successful or not. If not, you will need to look into the logs of the test. Remember that the details of the tests run are found in `.github/workflows/deploy.yml` so it's always a good to start there.
 # 
 # If successful, then your project will be deployed on GitHub pages!
 # You can see on the side of your repository for the latest build and visit it from there:
 # 
-# ![gh-pages](images/gh-pages.png)
-
-# ### Features
-# 
-# Jupyter Notebook is 
+# <!--![gh-pages](images/gh-pages.png)-->
 
 # ## Thoughts and Takeaways
 # 
-# Personally, I don't usually write my articles from Jupyter Notebooks. I really like the clear split of running expeirments on Jupyter (or usually just Python) and then writing an article with a clear narrative in mind in order to make it appealing to the reader.
 # 
-# Thoughts on jupyter_to_medium in general?
+# ### Jupyter to Medium
+# Personally, I don't usually write my articles from Jupyter Notebooks. I really like the clear split of running expeirments on Jupyter (or usually just Python) and then writing an article with a clear narrative in mind in order to make it appealing to the reader. As such, I don't think I'll be using `jupyter_to_medium` much. I find uploading images and captioning them far simpler on Medium and will probably continue that way.
 # 
-# So going forward, I don't think I'll be using `jupyter_to_medium` much, if at all.
+# In general though, I thing it's a great package that can be helpful for a lot of writers. It can really accelerate the writing process of articles.
 # 
-# On the other hand, `jupyter-book` seems extremely promising. I am quite fond of it so far, and I think I'll start notetaking there as opposed to locally, while slowly starting to migrate my older content.
+# ### Jupyter Book
 # 
+# `jupyter-book` seems extremely promising. I am quite fond of it so far, and I think I'll start notetaking there as opposed to locally, while slowly starting to migrate my older content. There's still much to learn... there are still many features that I need to explore, such as referencing, proper use of figured and captions, proper integrations with code.
+# 
+# Especially because I have not figured out why the images cause a failed build on GitHub but a successful one locally...
+# 
+# 
+# All images by author unless indicated otherwise.
