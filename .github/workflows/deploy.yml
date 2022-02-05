@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        ipython kernel install --name=practical-data-science
+        ipython kernel install --name=practical-data-science --user
 
 
     # Build the book
