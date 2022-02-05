@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -215,6 +217,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-pitfalls">
+   Common Pitfalls
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#synthetically-improving-dataset">
+   Synthetically Improving Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-imbalanced-datasets">
+   Evaluating Imbalanced Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   Experiments
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -227,6 +257,34 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-pitfalls">
+   Common Pitfalls
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#synthetically-improving-dataset">
+   Synthetically Improving Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-imbalanced-datasets">
+   Evaluating Imbalanced Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   Experiments
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -235,7 +293,85 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="imbalanced-classification">
 <h1>Imbalanced Classification<a class="headerlink" href="#imbalanced-classification" title="Permalink to this headline">¶</a></h1>
-<p>This notebook is about imbalanced classification</p>
+<p>In many real world classification problems, you run into the problem of class imbalance. That is, one of your classes appears much more frequently than the other(s). Examples include: email spam detection, fraud detection, etc. This can be problematic, since your model may learn the data for the class with the higher frequency (Negative), when you are mostly interested in predicting the class with the lower frequency (Positive).</p>
+<p>Here I describe:</p>
+<ul class="simple">
+<li><p>Common pitfalls when dealing with imbalanced data</p></li>
+<li><p>Methods to synthetically improve datasets for imbalanced classification</p></li>
+<li><p>Correctly evaluating models on imbalanced datasets</p></li>
+</ul>
+<div class="section" id="common-pitfalls">
+<h2>Common Pitfalls<a class="headerlink" href="#common-pitfalls" title="Permalink to this headline">¶</a></h2>
+<p>A very common pitfall when dealing with imbalanced datasets is the choice of the metric. Typically, we use accuracy to measure how well our classification tasks perform. However, because we are interested in predicting the positive class, accuracy can be misleading because it prioritises the negative class. This is shown in the schematic below:</p>
+<p><img alt="class_imb_acc" src="_images/class_imb_acc.png" /></p>
+<p>As such, you need to use a metric that emphasises how correctly you classify the positive classes. Recall and the F-Score can be used for this. As a reminder, they are given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Recall} = \frac{TP}{TP+FN}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+F_\beta = (1+\beta^2)\frac{\text{Precision}\cdot \text{Recall}}{\beta^2\text{Precision} + \text{Recall}}
+\]</div>
+<p>The weight <span class="math notranslate nohighlight">\(\beta\)</span> can be used to control how much emphasis you give to Precision. Precision is defined as: <span class="math notranslate nohighlight">\(\text{Precision}=TP/(TP+FP)\)</span></p>
+<p>Let’s consider the effect this has for different values of <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p><img alt="recall-f-score" src="_images/recall-f-score.png" /></p>
+</div>
+<div class="section" id="synthetically-improving-dataset">
+<h2>Synthetically Improving Dataset<a class="headerlink" href="#synthetically-improving-dataset" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="evaluating-imbalanced-datasets">
+<h2>Evaluating Imbalanced Datasets<a class="headerlink" href="#evaluating-imbalanced-datasets" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">betas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">f_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">precision</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">recall</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">beta_2</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">beta_2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">beta_2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">precision</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">bool_ids</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span>
+    <span class="n">TP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bool_ids</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">FP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">~</span><span class="n">bool_ids</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">TP</span><span class="o">/</span><span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">FP</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">recall</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">bool_ids</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span>
+    
+    <span class="n">TP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bool_ids</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">FN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">~</span><span class="n">bool_ids</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">TP</span><span class="o">/</span><span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">FN</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">betas</span><span class="p">,</span> <span class="n">f_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">betas</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;beta&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;F Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Precision&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="s2">&quot;Approaches Recall&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;f-score-curve.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+
+
+<span class="c1"># multiclass recall?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/imbalanced_classes_5_0.png" src="_images/imbalanced_classes_5_0.png" />
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
