@@ -133,3 +133,6 @@ practical-data-science2/_build
 
 # .idea
 .idea
+
+# _build from jupyter-book
+_build
