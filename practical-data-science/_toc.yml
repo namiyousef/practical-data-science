@@ -7,3 +7,4 @@ chapters:
 - file: markdown
 - file: notebooks
 - file: medium
+- file: imbalanced_classes
