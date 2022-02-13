@@ -3,8 +3,15 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: medium
-- file: imbalanced_classes
+parts:
+  - caption: Placeholder
+  #- caption: Introduction
+  #  chapters:
+  #    - file: Introduction/intro.md
+  - caption: Google Colab
+    chapters:
+      - file: markdown
+      - file: notebooks
+      - file: medium
+      - file: imbalanced_classes
+      - file: colab
