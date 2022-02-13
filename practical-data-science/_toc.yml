@@ -5,10 +5,6 @@ format: jb-book
 root: intro
 parts:
   - caption: Placeholder
-  #- caption: Introduction
-  #  chapters:
-  #    - file: Introduction/intro.md
-  - caption: Google Colab
     chapters:
       - file: markdown
       - file: notebooks
