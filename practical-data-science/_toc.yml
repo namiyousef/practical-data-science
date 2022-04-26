@@ -10,4 +10,6 @@ parts:
       - file: notebooks
       - file: medium
       - file: imbalanced_classes
-      - file: colab
+  - caption: Practical Tips on Notebooks
+    chapters:
+      - file: notebooks/GoogleColab.ipynb
