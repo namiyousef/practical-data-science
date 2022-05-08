@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPU Integration Tests Using Kaggle &#8212; Practical Data Science</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Practical Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/GoogleColab.html">
+   Google Colab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CI/CD/CT
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Continuous Integration, Delivery and Training
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     GPU Integration Tests Using Kaggle
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ci_cd_ct/github_actions/gpu_integration_tests.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/namiyousef/Practical Data Science"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/namiyousef/Practical Data Science/issues/new?title=Issue%20on%20page%20%2Fci_cd_ct/github_actions/gpu_integration_tests.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/namiyousef/Practical Data Science/main?urlpath=tree/docs/ci_cd_ct/github_actions/gpu_integration_tests.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-statement">
+   Problem Statement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-considerations">
+   Other Considerations
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>GPU Integration Tests Using Kaggle</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-statement">
+   Problem Statement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-considerations">
+   Other Considerations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="gpu-integration-tests-using-kaggle">
+<h1>GPU Integration Tests Using Kaggle<a class="headerlink" href="#gpu-integration-tests-using-kaggle" title="Permalink to this headline">¶</a></h1>
+<p>Without a local GPU device, writing unit tests that use a GPU runtime can be difficult. This is because a) it is difficult to migrate an entire codebase to Kaggle/Colab, and b) it is even harder to automate this. Here I present a CI method to run unit tests using a Kaggle GPU runtime.</p>
+<div class="section" id="problem-statement">
+<h2>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+<p>Without a local GPU device, I typically use Colab/Kaggle only at the last step when training. This means that while developing, I can’t verify that the training loop will work on a GPU runtime. Even if I go through the hassle of debugging through Colab/Kaggle, any further changes that I make to the codebase offline will need to be tested again. Working in a team multiplies all of these problems. At this stage automated tests on a GPU runtime become really handy.</p>
+<p>Ideally, there would be a CI/CD service that allows you to connect to a GPU runtime for <strong>free</strong>. However at the time of writing there are no such services. The closest one is <a class="reference external" href="https://gradient.run">Gradient</a> which allegedly allows you to connect to a <a class="reference external" href="https://gradient.run/free-gpu">free M4000 community GPU</a>, however the documentation was not clrea on whether the free GPU is also available on their <a class="reference external" href="https://docs.paperspace.com/gradient/workflows/">Workflow</a> service. When I tried this, it required a credit card so I decided to go for alternative methods.</p>
+<p>This left me with a solution that interfaces with Colab/Kaggle directly. There were unique challenges associated with both:</p>
+<ul class="simple">
+<li><p><strong>Colab:</strong> you can ssh into Colab and use the GPU available, however this cannot be automated since you can’t launch a Colab runtime programmatically. You must do this manually through your browser.</p></li>
+<li><p><strong>Kaggle:</strong> you can ssh into Kaggle, but you won’t be able to see the GPU. This is because the run button on Kaggle initialises certain commands before you can use the GPU. I was not able to figure out how to do this programmatically.</p></li>
+</ul>
+<p>The final solution I settled on was to launch a GPU enabled Kaggle script to run integration tests.</p>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>The solution is to do the following inside a GitHub Actions runtime:</p>
+<ul class="simple">
+<li><p><strong>Authenticate Kaggle CLI:</strong> use a Kaggle API token to setup the Kaggle CLI. This will allow you to directly interface with Kaggle for running scripts/notebooks using a GPU runtime</p></li>
+<li><p><strong>Create and Send Tests:</strong> create a Python script that will run on a Kaggle GPU runtime. This Python script will clone the repository you wish to test, setup the virtual environment and run <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. The Kaggle CLI is then used to send a script with the name and title of the repository you are testing. This is done using <code class="docutils literal notranslate"><span class="pre">kaggle</span> <span class="pre">kernels</span> <span class="pre">push</span> <span class="pre">$REPO_NAME</span></code></p></li>
+<li><p><strong>Check Kaggle Status:</strong> use <code class="docutils literal notranslate"><span class="pre">kaggle</span> <span class="pre">kernels</span> <span class="pre">status</span> <span class="pre">$REPO_NAME</span></code> to check the status of the test. If the status has an error, this means that the test failed and the logs are returned (using <code class="docutils literal notranslate"><span class="pre">kaggle</span> <span class="pre">kernels</span> <span class="pre">output</span> <span class="pre">$REPO_NAME</span></code>). If the test has passed, then a success message is returned. Otherwise the status will be checked periodically.
+The diagram below shows how the solution works end-to-end:
+<img alt="kaggle-gpu-test" src="../../_images/kaggle-gpu-test.png" /></p></li>
+</ul>
+<p>All of this is written as a separate <code class="docutils literal notranslate"><span class="pre">action.yml</span></code>. (ADD CItation). You can then use this in <strong>any</strong> repository GitHub Workflow files as such:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">integration</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">steps</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;namiyousef/action-kaggle-gpu-test&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">git_access_token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">secrets.GIT_READ_ONLY_ACCESS_TOKEN</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w">  </span><span class="c1"># git token (read only)</span><span class="w"></span>
+<span class="w">          </span><span class="nt">kaggle_api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">secrets.KAGGLE_API_KEY</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w">  </span><span class="c1"># copy-pasted contents of kaggle.json</span><span class="w"></span>
+<span class="w">          </span><span class="nt">repository_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{</span><span class="nv"> </span><span class="s">github.repository</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">test_folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tests/integration</span><span class="w">  </span><span class="c1"># folder to run tests on, from repository being tested</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You must add the following secrets to the repository:</p>
+<ul class="simple">
+<li><p><strong>GIT_READ_ONLY_ACCESS_TOKEN:</strong> an access token that has read only rights. This is needed to clone the GitHub repository in the Kaggle runtime.</p></li>
+<li><p><strong>KAGGLE_API_KEY:</strong> the contents of the <code class="docutils literal notranslate"><span class="pre">kaggle.json</span></code> API key from Kaggle. This is used to configure the CLI</p></li>
+</ul>
+<p>The action file itself can be found in the following <a class="reference external" href="https://github.com/namiyousef/action-kaggle-gpu-test/blob/main/action.yml">GitHub repository</a>.</p>
+</div>
+<div class="section" id="other-considerations">
+<h2>Other Considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This is not the most ideal workflow, since you will have to keep track of multiple API tokens.</p></li>
+<li><p>The code for the action itself is hard to debug.</p></li>
+<li><p>will install the whole thing each time, so a bit time consuming</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "practical-data-science"
+        },
+        kernelOptions: {
+            kernelName: "practical-data-science",
+            path: "./ci_cd_ct/github_actions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'practical-data-science'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Yousef Nami<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
