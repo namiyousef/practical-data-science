@@ -1,16 +1,5 @@
-# Welcome to your Jupyter Book
+# Practical Data Science
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is a collection of practical notes for Data Scientists. It is best thought of as a handbook that can be used to quickly remind you of considerations that are practical in nature. They are based on industry experience and implementation. As a result, no theory is covered and knowledge of the underlying concepts will be assumed. Relevant resources are given where appropriate for a refresher.
 
-:::{note}
-Here is a note!
-:::
-
-And here is a code block:
-
-```
-e = mc^2
-```
-
-Check out the content pages bundled with this sample book to see more.
+My goal in writing this is to have a set of notes that I can revisit to remember things that I've learnt through practice when dealing with different types of problems and models. 
