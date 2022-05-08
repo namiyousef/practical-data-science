@@ -4,12 +4,28 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Placeholder
+  - caption: Data and Representation
     chapters:
-      - file: markdown
-      - file: notebooks
-      - file: medium
-      - file: imbalanced_classes
-  - caption: Practical Tips on Notebooks
+      - file: data_and_representation/intro.md
+  - caption: Practical ML
     chapters:
+      - file: practical_ml/intro.md
+        sections:
+          - file: medium
+          - file: imbalanced_classes
+  - caption: Notebooks
+    chapters:
+      - file: notebooks/intro.md
+      - file: notebooks/jupyter.ipynb
       - file: notebooks/GoogleColab.ipynb
+      - file: notebooks/kaggle.ipynb
+  #- caption: ETL Pipelines
+  #  chapters:
+  #    -
+  - caption: CI/CD/CT
+    chapters:
+      - file: ci_cd_ct/intro.md
+      - file: ci_cd_ct/github_actions/intro.md
+        sections:
+          - file: ci_cd_ct/github_actions/gpu_integration_tests.ipynb
+  #- caption: Documentation
