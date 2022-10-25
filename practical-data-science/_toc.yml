@@ -4,9 +4,15 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Application Development
+    chapters:
+      - file: application_development/setup/intro.md
+        sections:
+          - file: application_development/setup/setup.md
   - caption: Data and Representation
     chapters:
       - file: data_and_representation/intro.md
+      - file: data_and_representation/data_importance/intro.md
   - caption: Practical ML
     chapters:
       - file: practical_ml/intro.md
