@@ -34,4 +34,8 @@ parts:
       - file: ci_cd_ct/github_actions/intro.md
         sections:
           - file: ci_cd_ct/github_actions/gpu_integration_tests.ipynb
+  - caption: Version Control
+    chapters:
+      - file: git/intro.md
+      - file: git/cheatsheet/cheatsheet.md
   #- caption: Documentation
