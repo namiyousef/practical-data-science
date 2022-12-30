@@ -7,13 +7,19 @@ The rise of Kubernetes has been due to the trend of moving from Monolith to
 Microservice applications. The increased the use of containers requires 
 software for managing them. 
 
-The key features of kubernetes are {cite:p}``:
+The key features of kubernetes are:
 - High availability or no downtime
 - Scalability or high performance
 - Disaster recovery - backup and restore
 
-The k8s architecture is always comprised of a master node (a virtual or 
-physical machine) and worker nodes, each running a kubelet process. This is 
+The k8s architecture, or _Cluster_, is always comprised of a master node (a 
+virtual or 
+physical machine) and at least one worker node (A _Node_ is a physical or 
+virtual 
+machine).
+
+Each worker node runs a kubelet process. 
+This is 
 the process that makes it possible for nodes to communicate with one 
 another. Each node can have different processes running on them (e.g. 
 multiple containers).
@@ -38,9 +44,12 @@ then your whole processes will fail.
 - StatefulSet
 - DaemonSet
 
-- Pod: an abstraction over a container. This abstraction enables you to use 
+- Pod: an abstraction over a container, and the smallest deployable 
+  computing unit in k8s. This 
+  abstraction enables you to use 
   any containers that you wish, e.g. not necessarily Docker. Typically, a 
-  pod will only contain 1 application. Each pod has an internal IP address. 
+  pod will only contain 1 application. Each pod 
+  has an internal IP address. 
   When a pod crashes, then k8s master node restarts it, however this gets a 
   brand new IP address. You therefore can't guarantee access to a pod using 
   the IP Address.
@@ -48,5 +57,12 @@ then your whole processes will fail.
   if a pod dies, then the internal IP address will be updated and will point 
   to the static IP address.
 - Ingress: 
+
+Typically, production and staging clusters distribute workload across 
+multiple worker nodes. Test clusters typically run all components on the 
+same physical or virtual node.
+
+A namespace is a way for k8s user to organise different clusters within the 
+same physical cluster.
 
 
