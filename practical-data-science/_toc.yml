@@ -9,6 +9,11 @@ parts:
       - file: application_development/setup/intro.md
         sections:
           - file: application_development/setup/setup.md
+  - caption: Python Best Practices
+    chapters:
+      - file: python_best_practices/documentation/intro.md
+        sections:
+          - file: python_best_practices/documentation/sphinx_documentation.md
   - caption: Data and Representation
     chapters:
       - file: data_and_representation/intro.md
