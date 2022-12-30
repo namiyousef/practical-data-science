@@ -3,5 +3,5 @@ matplotlib
 numpy
 ghp-import
 pandas
-nbconvert==5.6.1
+nbconvert
 ipykernel
